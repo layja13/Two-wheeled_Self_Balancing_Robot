@@ -5,4 +5,4 @@ In the second project, an exploration of the project one is made from a differen
 
 The third project is the code for a real implementation of the TWSBR with a standard PID controller using an Arduino.
 
-Project one and two uses the same genetic algorithm, and the same simulation environment, which is Pybullet. Basically, everything (with the exception of the environment) is made from scratch.
+Project one and two uses the same genetic algorithm, and the same simulation environment, which is Pybullet. Basically, everything (with the exception of the environment) is made from scratch (for projects number one and two).
