@@ -1,6 +1,6 @@
-#This program stabilizes the position (angle) of a self-balancing robot through a standard PID controller (using Arduino libraries).
-#It contains far less lines of code that the ones I had found on internet. 
-#Every unnecessary step was deleted and the code is organized and commented.
+//This program stabilizes the position (angle) of a self-balancing robot through a standard PID controller (using Arduino libraries).
+//It contains much less lines of code that the ones I had found on internet. 
+//The code is organized and commented.
 
 #include <PID_v1.h>
 #include <LMotorController.h>
@@ -42,7 +42,7 @@ void setup() {
   Serial.begin(115200);
 
   //-----------MPU6050---------
-  //Testing MPU connection and initialization for general using
+  //Testing MPU connection and initialization for general usage
    if(mpu.testConnection()){
      Serial.println("Successful connection");
      mpu.dmpInitialize();
@@ -77,13 +77,13 @@ void loop() {
   Serial.println(Output);
   
   //-----------PID---------------
-  //Input is the first value of ypr array (PITCH) // Also, here the input measure has been scaled
+  //The input is the first value of ypr array (PITCH) // Also, the input is scaled
   Input = ypr[1] * 90/M_PI;
   if (Input <0){
     Input = Input+180;
   }
   // PID library algorithm function (It determines the "Output" variable).
-  pid.Compute(); 
+  Output = pid.Compute(); 
   
   //-----------L298N------------
   //Output PID controller signal (control signal) is equal to the signal the motors receive
