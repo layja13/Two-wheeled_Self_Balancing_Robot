@@ -4,6 +4,8 @@ import math
 import random
 import RL
 from collections import deque
+from pathlib import Path
+
 
 # Obtaining position, linear velocity and angular velocity
 def get_robot_state(robot_id):   
@@ -23,8 +25,9 @@ def simulation_Adaptive_PID_Balancing(PID):
     planeId = p.loadURDF("plane.urdf")
     startPos = [0,0,-0.15]
     startOrientation = p.getQuaternionFromEuler([0,0,0])
-    robot_id = robotId = p.loadURDF("/self_balancing_robot.urdf", startPos, startOrientation) # Upload robot
-
+    script_dir = Path(__file__).resolve().parent
+    robot_path = script_dir / "self_balancing_robot.urdf"
+    robot_id = robotId = p.loadURDF(str(robot_path), startPos, startOrientation)
 
     # PID parameters
     control_output_max = 25 # Max value of PID (equal to max speed of motors rad/s)
